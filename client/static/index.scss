@@ -1,1 +1,57 @@
 // @import filename
+// --------------------COLORS------------------------
+
+$curve-borders: 5px;
+$primary-black: rgb(77, 77, 77);
+$secondary-black: lighten($primary-black, 10%);
+$light-grey: lighten($primary-black, 60%);
+$super-light-grey: rgb(201, 69, 69);
+$btn-color: rgb(115, 216, 203);
+
+
+// Dumble colors
+$primary-col: rgb(138, 79, 187);
+// $primary-text-col: rgb(228,36,68);
+$primary-text-col: rgb(228,232,240);
+
+$secondary-col: rgb(138, 127, 167);
+$accent-col: #98DCCD;
+$light-accent-col: #eee2d91c;
+
+//----------------ELEMENT STYLING--------------------
+body{
+    margin: 0;
+    padding: 0;
+}
+#nav{  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color:lightgoldenrodyellow;
+    height: 50px;
+    text-decoration: none;
+    #logo{
+      color: rgb(126, 126, 173);
+      font-size: 3rem;
+    }
+    .navLink{
+        text-decoration: none;
+        color: $primary-black;
+    }
+}
+
+.projects{
+    display: flex;
+    float: left;
+}
+
+.filterBox {
+    border: 2px solid $primary-black;
+    margin: 10px;
+    padding: 5px;
+}
+table{
+    margin: 10px;
+}
