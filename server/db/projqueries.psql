@@ -1,0 +1,3 @@
+
+copy projects(cohort, released, projectname, projecttype, stack, category, githubstars, technologies, githublink, writeuplink, description
+) from './projects.csv' delimiter ',' CSV HEADER;
