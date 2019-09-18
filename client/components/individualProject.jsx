@@ -1,52 +1,60 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
 import { Store } from '../state/reducers/userReducer.js'
-
+import TechView from './techView.jsx'
 
 
 function IndividualProject(){
 
     const { state: { currentProject }} = useContext(Store);
-    
+
+
+    function techParse(string){
+        const techArr = string.split(", ");
+        console.log("techArr: ", techArr)
+        return techArr;
+    }
     // useEffect(()=> {
     //     fetch()
     // }, [])
 
     return(
         <div>
-            <h1>{currentProject["Project Name"]}</h1>
+            <h1>{currentProject.projectname}</h1>
             <ul>
                 <li>
-                    Cohort: {currentProject.Cohort}
+                    Cohort: {currentProject.cohort}
                 </li>
                 <li>
-                    Released: {currentProject.Released}
+                    Released: {currentProject.released}
                 </li>
                 <li>
-                    Project Type: {currentProject["Project Type"]}
+                    Project Type: {currentProject.projecttype}
                 </li>
                 <li>
-                    Stack: {currentProject.Stack}
+                    Stack: {currentProject.stack}
                 </li>
                 <li>
-                    Category: {currentProject.Category}
+                    Category: {currentProject.category}
                 </li>
                 <li>
-                    Github Stars: {currentProject["Github Stars"]}
+                    Github Stars: {currentProject.githubstars}
                 </li>
                 <li>
-                    Github Link: {currentProject["Github Stars"]}
+                    Github Link: <a href={`${currentProject.githublink}`}>{currentProject.githublink}</a>
                 </li>
                 <li>
-                    Write up Link: {currentProject["Github Stars"]}
+                    Write up Link: <a href={`${currentProject.writeuplink}`}>{currentProject.writeuplink}</a>
                 </li>
                 <li>
-                    Description: {currentProject.Description}
+                    Description: {currentProject.description}
                 </li>
-                <li>
-                    Technologies: {currentProject.Technologies}
-                </li>
+                
             </ul>
+            <div>
+                    Technologies: 
+                    <TechView techs={techParse(currentProject.technologies)}></TechView>
+            </div>
         </div>
     )
 }

@@ -24,38 +24,38 @@ import {
 
 function ProjectsTable({projects}){
     const [columns] = useState([
-        { name: "Cohort", title: "Cohort" },
-        { name: "Released", title: "Released" },
-        { name: "Project Name", title: "Project Name" },
-        { name: "Project Type", title: "Project Type" },
-        { name: "Stack", title: "Stack" },
-        { name: "Category", title: "Category" },
-        { name: "Technologies", title: "Technologies" },
-        { name: "Github Stars", title: "Github Stars" },
-        { name: "Github Link", title: "Github Link" },
-        { name: "Write up Link", title: "Write up Link" },
-        { name: "Description", title: "Description" },
+        { name: "cohort", title: "cohort" },
+        { name: "released", title: "released" },
+        { name: "projectname", title: "projectname" },
+        { name: "projecttype", title: "projecttype" },
+        { name: "stack", title: "stack" },
+        { name: "category", title: "category" },
+        { name: "technologies", title: "technologies" },
+        { name: "githubstars", title: "github stars" },
+        { name: "githublink", title: "github link" },
+        { name: "writeuplink", title: "writeuplink" },
+        { name: "description", title: "description" },
     ]);
     const rows = projects;
-    rows.forEach((row) => {
-        row["Github Link"] = `<a href="${row["Github Link"]}`;
-    })
+    // rows.forEach((row) => {
+    //     row["github link"] = `<a href="${row["github link"]}`;
+    // })
     const [columnWidths, setColumnWidths] = useState([
-        { columnName: "Cohort", width: 90 },
-        { columnName: "Released", width: 90 },
-        { columnName: "Project Name", width: 130},
-        { columnName: "Project Type", width: 160},
-        { columnName: "Stack", width: 90 },
-        { columnName: "Category", width: 90 },
-        { columnName: "Technologies", width: 200 },
-        { columnName: "Github Stars", width: 90 },
-        { columnName: "Github Link", width: 150 },
-        { columnName: "Write up Link", width: 150 },
-        { columnName: "Description", width: 300 },
+        { columnName: "cohort", width: 90 },
+        { columnName: "released", width: 90 },
+        { columnName: "projectname", width: 130},
+        { columnName: "projecttype", width: 160},
+        { columnName: "stack", width: 90 },
+        { columnName: "category", width: 90 },
+        { columnName: "technologies", width: 200 },
+        { columnName: "githubstars", width: 90 },
+        { columnName: "githublink", width: 150 },
+        { columnName: "writeuplink", width: 150 },
+        { columnName: "description", width: 300 },
     ])
 
     const TableRow =({ row, ...restProps }) => (
-        <Table.Row {...restProps} onClick={() => alert(`You clicked on ${row["Project Name"]}`)} />
+        <Table.Row {...restProps} onClick={() => alert(`You clicked on ${row["ProjectName"]}`)} />
 
     )
 
@@ -76,7 +76,7 @@ function ProjectsTable({projects}){
           rows={rows}
           columns={columns}
         >
-            <SortingState defaultSorting={[{ columnName: "Project Name", direction: "asc"}]} />
+            <SortingState defaultSorting={[{ columnName: "projectname", direction: "asc"}]} />
             <IntegratedSorting />
             <FilteringState defaultFilters={[]} />
             <IntegratedFiltering />

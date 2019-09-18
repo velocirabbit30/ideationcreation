@@ -47,6 +47,7 @@
     "pg": "^7.12.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-portal-tooltip": "^2.4.7",
     "react-router": "^5.0.1",
     "react-table": "^6.10.3"
   }
