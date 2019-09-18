@@ -1,12 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './static/index.scss';
+import { StoreProvider } from './state/reducers/userReducer.js';
+import Main from './main.jsx';
+
 
 const App = () => {
-  return (  
-    
-    <div><h1>Hello World</h1></div>
-  );
+  return(
+    <StoreProvider>
+        <Main />
+    </StoreProvider>
+  )
 }
  
 export default App;
