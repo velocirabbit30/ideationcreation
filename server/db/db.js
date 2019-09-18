@@ -10,7 +10,7 @@ const pool = new Pool({
 // const dbQueries = fs.readFileSync(path.resolve(__dirname, 'projqueries.psql')).toString();
 // pool.query(dbQueries, (err, res) => {
 //   if (err) console.log(err);
-//   else if (res.rows.length > 0) console.log(res.rows);
+//   else console.log('successfully added queries');
 // });
 
 module.exports = {
