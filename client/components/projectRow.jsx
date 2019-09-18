@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
+import {
+  Table,
+} from '@devexpress/dx-react-grid-material-ui';
+import { Store } from '../state/reducers/userReducer'
+import { UPDATE_CURRENT_PROJECT, CURRENT_VIEW } from '../state/constants'
 
-function ProjectRow({row}){
-    return(
-        <tr>
-            <td key={row.Cohort}>{row.Cohort}</td>
-            <td key={row.Released}>{row.Released}</td>
-            <td key={row["Project Name"]}>{row["Project Name"]}</td>
-            <td key={row["Project Type"]}>{row["Project Type"]}</td>
-            <td key={row.Stack}>{row.Stack}</td>
-            <td key={row.Category}>{row.Category}</td>
-            <td key={row.Technologies}>{row.Technologies}</td>
-            <td key={row["Github Stars"]}>{row["Github Stars"]}</td>
-            <td key={row["Github Link"]}>{row["Github Link"]}</td>
-            <td key={row["Write up Link"]}>{row["Write up Link"]}</td>
-            <td key={row.Description}>{row.Description}</td>
-
-        </tr>
+function ProjectRow({ row, ...restProps }){ 
+    const { dispatch, state: { currentProject }} = useContext(Store);
+    return (
+        <Table.Row {...restProps} onClick={() => {
+            dispatch({ type: CURRENT_VIEW, payload: "individualProject"})
+            dispatch({ type: UPDATE_CURRENT_PROJECT, payload: row });
+            //  <Link className={row["Project Name"]} to={`/${row["Project Name"]}`}></Link>
+        }}>
+        </Table.Row>
     )
 }
 

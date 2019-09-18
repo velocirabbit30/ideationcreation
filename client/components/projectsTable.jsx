@@ -80,16 +80,10 @@ function ProjectsTable({projects}){
             <IntegratedSorting />
             <FilteringState defaultFilters={[]} />
             <IntegratedFiltering />
-            {/* <RowDetailState
-          defaultExpandedRowIds={[2, 5]}
-        /> */}
-          <Table rowComponent={TableRow}/>
-          <TableColumnResizing columnWidths={columnWidths} onColumnWidthsChange={setColumnWidths} />
-          <TableHeaderRow showSortingControls/>
-          {/* <TableRowDetail
-          contentComponent={RowDetail}
-        /> */}
-          <TableFilterRow />
+            <Table rowComponent={ProjectRow}/>
+            <TableColumnResizing columnWidths={columnWidths} onColumnWidthsChange={setColumnWidths} />
+            <TableHeaderRow showSortingControls/>
+            <TableFilterRow />
         </Grid>
       </Paper>
 
