@@ -24,11 +24,11 @@ const products = [{
 
 
 const Main = () => {
-  const { state: { isLoggedIn }} = useContext(Store);
+  const { state: { isLoggedIn, projects }} = useContext(Store);
   return(
       <div>
         {isLoggedIn === false && <Login></Login>}
-        {isLoggedIn === true && <Home products={products}/>}
+        {isLoggedIn === true && <Home products={projects}/>}
       </div>
   )
 }
