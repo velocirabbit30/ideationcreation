@@ -81,7 +81,7 @@ const UserReducer = (state, action) => {
             return { ...state, newUser: true };
         
         case LOGIN_USER:
-            return {...state, isLoggedIn: true};
+            return {...state, isLoggedIn: action.payload};
 
         case LOGOUT_USER:
             return { ...state, isLoggedIn: false };
