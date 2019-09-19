@@ -1,43 +1,21 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
-const fs = require('fs');
+// const fs = require('fs');
+// const {query, end} = require('../db/db'); 
 
 const techController = {
   parseHtml: (html) => {
     const $ = cheerio.load(html);
-    // const node = $('#main');
     const div = $('.kCrYT');
-    // const links = $('.BNeawe.s3v9rd');
-    // const googleLinkDiv = $('.g');
-    // // .ZINbbc.xpd.O9g5cc.uUPGi
-    // let def;
-    // let linksArr = '';
-    // node.each((idx, el) => {
-    //   // const linksEl = $(el).find(googleLinkDiv);
-    //   // linksArr+= linksEl.html();
-    //   // console.log('links element: ', linksEl.html());
-    // })
     let links = [];
-    // console.log(div.text());
     div.each((idx, el) => {
       const aEl = $(el).children('a').attr('href');
       if (aEl !== undefined) {
-        let sanitized = aEl.replace(/(\/url\?q=)|&.*/gi, '');
-        // console.log(sanitized);
+        let sanitized = aEl.replace(/(\/url\?q=|&.*)/gi, '');
         links.push(sanitized);
       };
     })
-    // let definition = div.text().slice(0, 250) +'...';
-    let definition = div.text().replace(/\..*|\n.*/g, '');
-    console.log(definition);
-    // links.each((index, element) => {
-    //   const linkEl = $(element).html();
-    //   // console.log('links element: ', linkEl);
-    //   // linksArr.push(linkEl)
-    //   linksArr += linkEl;
-    // })
-    // fs.writeFileSync('./cheerio.html', node);
-    // fs.writeFileSync('./cheerio1.html', divs);
+    let definition = div.text().replace(/\.[^js].*|\n.*/g, '');
     return {
       links, 
       definition
@@ -45,12 +23,18 @@ const techController = {
   },
   getResources: (req, res, next) => {
     const techName = req.body.techName;
-    fetch(`https://www.google.com/search?q=definition+${techName}&oq=definition+${techName}&aqs=chrome..69i57j0l5.5927j1j7&sourceid=chrome&ie=UTF-8`)
+    fetch(`https://www.google.com/search?sxsrf=ACYBGNTjriXhjDgTEvJpGcFmIKgY6t8xvA%3A1568916002239&ei=IsKDXbOZDtHC-gTQ9qOoCg&q=definition+${techName}+tech&oq=definition+${techName}+tech&gs_l=psy-ab.3...8964.9941..10062...0.5..0.81.752.10......0....1..gws-wiz.......0i71j0i8i7i30j0i8i13i30j0i8i30.eK1Rt-eo6zQ&ved=0ahUKEwizsvvHu93kAhVRoZ4KHVD7CKUQ4dUDCAs&uact=5`)
     .then(res => res.text())
     .then(body =>{
       if (body) {
         const resources = techController.parseHtml(body);
         res.locals.resources = resources;
+        // use if we want to add this entries into the db
+        // const linksStr = resources.links.join(',');
+        // query("insert into tech (name, links, definition) values ($1, $2, $3)", [techName, linksStr, resources.definition], (err, results) => {
+        //   if (err) throw new Error();
+        //   console.assert(results.fields, results.fields);
+        // })
         next();
       }
       else res.status(400).json({error: 'there was some error getting an html page'});

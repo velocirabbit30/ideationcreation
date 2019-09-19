@@ -15,11 +15,11 @@
 -- );
 
 -- create table if not exists tech (
---   "id" serial not null,
---   "name" VARCHAR (50) unique not null,
---   "description" (500) VARCHAR,
---   primary key (id)
--- );
+--   "id" serial not null, 
+--   "name" varchar (50) unique not null, 
+--   "links" varchar,
+--   "definition" varchar (500), 
+--   primary key (id));
 
 -- create table if not exists techwithprojects (
 --   "id" serial not null,
