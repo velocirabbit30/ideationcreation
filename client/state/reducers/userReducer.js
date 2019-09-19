@@ -1,9 +1,77 @@
-import { REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "../constants";
+import { REGISTER_USER, LOGIN_USER, LOGOUT_USER,  UPDATE_CURRENT_PROJECT, CURRENT_VIEW } from "../constants";
 import React from "react";
 
 const initialState = {
-  isLoggedIn: false,
-  errorMessage: ""
+  isLoggedIn: true,
+  errorMessage: "",
+  currentProject: {
+    Cohort: 30,
+    Released: "9,Sep-2016",
+    "Project Name": "ProtographQL",
+    "Project Type": "Developer Library",
+    Stack: "Full Stack",
+    Category: "WebRTC",
+    "Github Stars": 62,
+    Technologies: "JavaScript, jQuery, WebRTC, Socket.io, Node, Express, AlaSQL, Cold-Brew (WebRTC testing library), Selenium WebDriver, Mocha, Chai, Supertest",
+    "Github Link": "https://github.com/conspectio/conspectio",
+    "Write up Link": "https://docs.google.com/document/d/1RUZdrtODi_i_0sdrsNh-HqoNPAcOKao_5qQUuIunCsM/edit?usp=sharing",
+    Description: "an open-source library for grouping multiple live stream broadcasts, and scaling viewers using a p2p decentralized model."
+},
+  currentView: "projects",
+  projects: [
+    {
+        Cohort: 30,
+        Released: "9,Sep-2016",
+        "Project Name": "ProtographQL",
+        "Project Type": "Developer Library",
+        Stack: "Full Stack",
+        Category: "WebRTC",
+        "Github Stars": 62,
+        Technologies: "JavaScript, jQuery, WebRTC, Socket.io, Node, Express, AlaSQL, Cold-Brew (WebRTC testing library), Selenium WebDriver, Mocha, Chai, Supertest",
+        "Github Link": "https://github.com/conspectio/conspectio",
+        "Write up Link": "https://docs.google.com/document/d/1RUZdrtODi_i_0sdrsNh-HqoNPAcOKao_5qQUuIunCsM/edit?usp=sharing",
+        Description: "an open-source library for grouping multiple live stream broadcasts, and scaling viewers using a p2p decentralized model."
+    },  
+    {
+        Cohort: 30,
+        Released: "9,Sep-2016",
+        "Project Name": "Conspectio",
+        "Project Type": "Developer Library",
+        Stack: "Full Stack",
+        Category: "WebRTC",
+        "Github Stars": 62,
+        Technologies: "JavaScript, jQuery, WebRTC, Socket.io, Node, Express, AlaSQL, Cold-Brew (WebRTC testing library), Selenium WebDriver, Mocha, Chai, Supertest",
+        "Github Link": "https://github.com/conspectio/conspectio",
+        "Write up Link": "https://docs.google.com/document/d/1RUZdrtODi_i_0sdrsNh-HqoNPAcOKao_5qQUuIunCsM/edit?usp=sharing",
+        Description: "an open-source library for grouping multiple live stream broadcasts, and scaling viewers using a p2p decentralized model."
+    },
+    {
+        Cohort: 30,
+        Released: "9,Sep-2016",
+        "Project Name": "Conspectio",
+        "Project Type": "Developer Library",
+        Stack: "Full Stack",
+        Category: "WebRTC",
+        "Github Stars": 62,
+        Technologies: "JavaScript, jQuery, WebRTC, Socket.io, Node, Express, AlaSQL, GraphQL, Cold-Brew (WebRTC testing library), Selenium WebDriver, Mocha, Chai, Supertest",
+        "Github Link": "https://github.com/conspectio/conspectio",
+        "Write up Link": "https://docs.google.com/document/d/1RUZdrtODi_i_0sdrsNh-HqoNPAcOKao_5qQUuIunCsM/edit?usp=sharing",
+        Description: "an open-source library for grouping multiple live stream broadcasts, and scaling viewers using a p2p decentralized model."
+    },
+    {
+        Cohort: 30,
+        Released: "9,Sep-2016",
+        "Project Name": "Conspectio",
+        "Project Type": "Developer Library",
+        Stack: "Full Stack",
+        Category: "WebRTC",
+        "Github Stars": 62,
+        Technologies: "JavaScript, jQuery, WebRTC, Socket.io, Node, Express, AlaSQL, Cold-Brew (WebRTC testing library), Selenium WebDriver, Mocha, Chai, Supertest",
+        "Github Link": "https://github.com/conspectio/conspectio",
+        "Write up Link": "https://docs.google.com/document/d/1RUZdrtODi_i_0sdrsNh-HqoNPAcOKao_5qQUuIunCsM/edit?usp=sharing",
+        Description: "an open-source library for grouping multiple live stream broadcasts, and scaling viewers using a p2p decentralized model."
+    }
+  ]
 };
 
 const UserReducer = (state, action) => {
@@ -16,6 +84,13 @@ const UserReducer = (state, action) => {
 
         case LOGOUT_USER:
             return { ...state, isLoggedIn: false };
+        
+        case  UPDATE_CURRENT_PROJECT:
+            return { ...state, currentProject: action.payload };
+
+        case CURRENT_VIEW:
+            return { ...state, currentView: action.payload}
+            
         default:
             return state;
     }
