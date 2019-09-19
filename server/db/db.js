@@ -16,6 +16,8 @@ const pool = new Pool({
 module.exports = {
   query: function(query, args, cb) {
     pool.query(query, args, cb);
-    // pool.end(() => console.log('disconnected from pool'));
-  }
+  },
+  end: function() {
+    pool.end(() => console.log('disconnected from pool'));
+  } 
 }
