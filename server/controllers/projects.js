@@ -1,4 +1,4 @@
-const {query} = require('../db/db');
+const {query, end} = require('../db/db');
 
 module.exports = {
   getAllProjects: function (req, res, next) {
@@ -10,6 +10,7 @@ module.exports = {
         return res.status(500).json({'error': 'there was an error making that query'});
       }
       else res.locals.projects = results.rows;
+      end();
       return next();
     })
   }
