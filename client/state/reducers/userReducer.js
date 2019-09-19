@@ -2,7 +2,7 @@ import { REGISTER_USER, LOGIN_USER, LOGOUT_USER,  UPDATE_CURRENT_PROJECT, CURREN
 import React from "react";
 
 const initialState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   errorMessage: "",
   currentProject: {
     Cohort: 30,
