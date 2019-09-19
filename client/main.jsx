@@ -8,27 +8,12 @@ import { Store } from './state/reducers/userReducer.js'
 import Home from './components/home.jsx';
 
 
-const products = [{
-  name: "onion",
-  price: ".99",
-  id: 1
-}, {
-  name: "pepper",
-  price: "1.25",
-  id: 2
-}, {
-  name: "broccoli",
-  price: "3.00",
-  id: 3
-}];
-
-
 const Main = () => {
-  const { state: { isLoggedIn }} = useContext(Store);
+  const { state: { isLoggedIn, projects }} = useContext(Store);
   return(
-      <div>
+      <div className="main">
         {isLoggedIn === false && <Login></Login>}
-        {isLoggedIn === true && <Home products={products}/>}
+        {isLoggedIn === true && <Home products={projects}/>}
       </div>
   )
 }

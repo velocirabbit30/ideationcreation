@@ -12,6 +12,7 @@ authRouter.post('/login', authControllers.isVerified, authControllers.login, aut
 })
 
 authRouter.post('/register', authControllers.signUp, authControllers.signCookie, (req, res) => {
+  console.log('hit route');
   res.status(200).send('Successfully registered')
 });
 
