@@ -55,7 +55,7 @@ function Register () {
                 // console.log("You clicked the sign-up button");
                 if (userpassword === verifypassword && userpassword != '' && username != ''){
                         //do a fetch request and send our local state of the username and the password in the body             
-                  fetch('/api/auth/signUp',{
+                  fetch('/api/auth/register',{
                       method: 'POST',
                       body: JSON.stringify({username: username, password: userpassword}),
                       headers:{'Content-Type': 'application/json'}
