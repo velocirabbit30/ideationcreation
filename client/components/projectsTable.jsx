@@ -51,7 +51,7 @@ function ProjectsTable({projects}){
         { columnName: "githubstars", width: 90 },
         { columnName: "githublink", width: 150 },
         { columnName: "writeuplink", width: 150 },
-        { columnName: "description", width: 300 },
+        { columnName: "description", width: 200 },
     ])
 
     const TableRow =({ row, ...restProps }) => (
@@ -62,20 +62,9 @@ function ProjectsTable({projects}){
     
 
     return(
-        // <table>
-        //     <tbody>
-        //     <tr><TableHeader products={products}/></tr>
-        //     { products.map((row, i) => {
-        //         console.log("row: ", row);
-        //         return <ProjectRow key={i} row={row} />
-        //     })}
-        //     </tbody>
-        // </table>
+
         <Paper>
-        <Grid
-          rows={rows}
-          columns={columns}
-        >
+        <Grid rows={rows} columns={columns}>
             <SortingState defaultSorting={[{ columnName: "projectname", direction: "asc"}]} />
             <IntegratedSorting />
             <FilteringState defaultFilters={[]} />
