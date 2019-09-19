@@ -49,8 +49,15 @@ function Login(){
                 (e)=> {
 
                     if (userpassword != '' && username != ''){
-                      dispatch({ type: LOGIN_USER, payload: true});                    
-                      //do a fetch request and send our local state of the username and the password 
+                        //do a fetch request and send our local state of the username and the password in the body 
+                        //"/api/auth/login"
+                        //in the body JSON.stringify(loginObj)
+                        //const loginObj = {username: '', password: ''}
+                        fetch('/api/auth/login', {
+                            method: 'POST',
+                            body: JSON.stringify({username: username, password: userpassword}),    
+                            headers:{'Content-Type': 'application/json'}
+                        }).then(dispatch({ type: LOGIN_USER, payload: true}));                    
                       //then if the server validates our request we can change logged-in to true    
                     }
                         else {
