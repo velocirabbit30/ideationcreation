@@ -11,7 +11,7 @@ import Home from './components/home.jsx';
 const Main = () => {
   const { state: { isLoggedIn, projects }} = useContext(Store);
   return(
-      <div>
+      <div className="main">
         {isLoggedIn === false && <Login></Login>}
         {isLoggedIn === true && <Home products={projects}/>}
       </div>

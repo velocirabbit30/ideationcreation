@@ -1,7 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
 import { Store } from '../state/reducers/userReducer.js'
-import TechView from './techView.jsx'
+import TechView from './techView.jsx';
+import ScriptTag from 'react-script-tag';
+
+
 
 
 function IndividualProject(){
@@ -19,7 +22,10 @@ function IndividualProject(){
     // }, [])
 
     return(
-        <div>
+        <div className="individualProject">
+            {/* <ScriptTag isHydrating={true} type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1937_RC01/embed_loader.js"></ScriptTag> */}
+            {/* <ScriptTag isHydrating={false} type="text/javascript" >{trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"graphql","geo":"US","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"geo=US&q=graphql&date=today 12-m","guestPath":"https://trends.google.com:443/trends/embed/"})} </ScriptTag> */}
+
             <h1>{currentProject.projectname}</h1>
             <ul>
                 <li>
@@ -52,9 +58,11 @@ function IndividualProject(){
                 
             </ul>
             <div>
-                    Technologies: 
+                    <h4>Technologies: </h4>
                     <TechView techs={techParse(currentProject.technologies)}></TechView>
             </div>
+            
+
         </div>
     )
 }

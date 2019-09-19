@@ -4,6 +4,7 @@ import React from "react";
 const initialState = {
   isLoggedIn: true,
   errorMessage: "",
+  loading: true,
   currentProject: {
     Cohort: 30,
     Released: "9,Sep-2016",
