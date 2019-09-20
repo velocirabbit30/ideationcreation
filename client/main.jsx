@@ -13,6 +13,7 @@ const Main = () => {
   
   return(
       <div className="main">
+        <Nav></Nav>
         {isLoggedIn === false && <Login></Login>}
         {isLoggedIn === true && <Home products={projects}/>}
       </div>

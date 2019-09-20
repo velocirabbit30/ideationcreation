@@ -9,6 +9,7 @@ module.exports = {
         return res.status(500).json({'error': 'there was an error making that query'});
       }
       else res.locals.projects = results.rows;
+      // end();
       return next();
     })
   }

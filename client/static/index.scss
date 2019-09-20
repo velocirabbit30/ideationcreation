@@ -10,11 +10,13 @@ $btn-color: rgb(115, 216, 203);
 
 
 // Dumble colors
-$primary-col: rgb(138, 79, 187);
+$primary-col: #353E46;
+$primary-col-light: lighten($primary-col, 20%);
 // $primary-text-col: rgb(228,36,68);
 $primary-text-col: rgb(228,232,240);
 
-$secondary-col: rgb(138, 127, 167);
+$secondary-col: #75c4f8;
+$secondary-col-dark: darken($secondary-col,30%);
 $accent-col: #98DCCD;
 $light-accent-col: #eee2d91c;
 
@@ -32,7 +34,7 @@ body{
     background-color: $super-light-grey;
     height: 100%;
     // min-height: 1000px;
-
+    
 }
 
 // div{
@@ -56,17 +58,45 @@ body{
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    background-color:$secondary-col;
+    background-color:$primary-col;
     height: 50px;
     text-decoration: none;
     #logo{
-      color: $primary-col;
+      color: $secondary-col;
       font-size: 3rem;
     }
     .navLink{
         text-decoration: none;
-        color: $primary-black;
+        color: $secondary-col;
     }
+}
+#subNav{  
+    font-family: $font-1;
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color:$light-grey;
+    height: 50px;
+    text-decoration: none;
+    #logo{
+      color: $secondary-col;
+      font-size: 3rem;
+    }
+    .navLink{
+        text-decoration: none;
+        color: $primary-col;
+    }
+    :hover {
+        cursor: pointer;
+    }
+}
+
+h1 {
+    margin-left: 10%;
 }
 
 .projects{
@@ -108,12 +138,139 @@ table{
     border: 1px solid $primary-black;
 }
 
+.projectRow {
+    cursor: pointer;
+
+    :hover {
+        opacity: 0.7;
+        background-color: $light-grey;
+    }
+}
+
 .individualProject {
     height: 100%;
+
+    li {
+        list-style: none;
+
+        .detailName {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+    }
+    h1 {
+        margin-left: 10%;
+    }
+    display: flex;
+    flex-direction: column;
+
+}
+
+.allInfoBox {
+    border: 1px solid $super-light-grey;
+    box-shadow: 1px 1px 20px 5px rgba(0,0,0,0.19);
+    width: 80%;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.infoBox {
+    // width: 45%;
+    li {
+        margin: 10px;
+        padding: 3px;
+    }
+}
+.techBox {
+    // width: 45%;
+    text-align: center;
+}
+
+
+
+// .individualProjectTable {
+//     display: grid;
+//     grid-template-columns: 30% auto;
+//     grid-template-rows: auto;
+// }
+
+.head {
+    grid-column-start: 1
+}
+
+.info {
+    grid-column-start: 2
 }
 
 .techList {
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 200px;
+    cursor: pointer;
 }
+.techButton {
+    // width: 500px;
+    margin: "20px";
+
+    div {
+        border: 1px solid $light-grey;
+        background-color: $super-light-grey;
+        margin: 10px;
+        padding: 3px;
+        text-align: center;
+
+        :hover {
+            background-color: $light-grey
+        }
+    }
+}
+
+.googleTrends {
+    width:100%;
+     height:"500px"; 
+}
+
+.googleTrendsDiv {
+    height:"500px"
+}
+
+.popup {
+    display: flex;
+    flex-direction: row;
+}
+
+.filterBox {
+    display: flex;
+    flex-direction: column;
+    font-size: .9rem;
+    
+    input {
+        font-family: $font-1;
+        margin: 10px;
+        padding: 3px;
+        border: 1px solid $primary-col-light;
+    }
+    .submit {
+        margin: 10px;
+        padding: 3px;
+        border: 1px solid $primary-col;
+        background-color: $primary-col-light;
+        color: white;
+        margin: 5px;
+    }
+}
+
+// .stateful-button {
+//     margin-top: -50px;
+// }
+// .techPopup {
+//     // width: 500px;
+//     margin-top: -50px;
+// }
+
+// .ToolTipPortal {
+//     width: 500px;
+// }
