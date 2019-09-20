@@ -2,7 +2,6 @@ const {query, end} = require('../db/db');
 
 module.exports = {
   getAllProjects: function (req, res, next) {
-    console.log('entered into getAllProjects');
     const queryString = 'select * from projects';
     query(queryString, null, (err, results) => {
       if (err) {

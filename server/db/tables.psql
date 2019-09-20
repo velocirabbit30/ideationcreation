@@ -15,16 +15,22 @@
 -- );
 
 -- create table if not exists tech (
---   "id" serial not null,
---   "name" VARCHAR (50) unique not null,
---   "description" (500) VARCHAR,
---   primary key (id)
--- );
+--   "id" serial not null, 
+--   "name" varchar (50) unique not null, 
+--   "links" varchar,
+--   "definition" varchar (500), 
+--   primary key (id));
 
 -- create table if not exists techwithprojects (
 --   "id" serial not null,
 --   "techid" INT references tech(id),
 --   "projectsid" INT references projects(id)
 -- );
+
+create table if not exists users (
+  "id" serial not null,
+  "username" VARCHAR (128) unique not null,
+  "password" VARCHAR (200) not null
+);
 
 select * from projects;

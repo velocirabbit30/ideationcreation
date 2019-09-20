@@ -60,13 +60,18 @@ function Register () {
         <br />
         <button onClick ={
             (e)=> {
-                console.log("You clicked the sign-up button");
+                // console.log("You clicked the sign-up button");
                 if (userpassword === verifypassword && userpassword != '' && username != ''){
-                  dispatch({ type: LOGIN_USER, payload: true});  
+                        //do a fetch request and send our local state of the username and the password in the body             
+                  fetch('/api/auth/register',{
+                      method: 'POST',
+                      body: JSON.stringify({username: username, password: userpassword}),
+                      headers:{'Content-Type': 'application/json'}
+                  }).then(dispatch({ type: LOGIN_USER, payload: true}));  
                 }
                 else {
                   if(userpassword === verifypassword){
-                    setdisplayErrorMessage("Password is required.")
+                    setdisplayErrorMessage("Password and Username is required.")
                   }
                   else{
                     setdisplayErrorMessage("Your passwords need to match.")
