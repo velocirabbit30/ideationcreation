@@ -12,6 +12,7 @@ const Main = () => {
   const { state: { isLoggedIn, projects }} = useContext(Store);
   return(
       <div className="main">
+        <Nav></Nav>
         {isLoggedIn === false && <Login></Login>}
         {isLoggedIn === true && <Home products={projects}/>}
       </div>

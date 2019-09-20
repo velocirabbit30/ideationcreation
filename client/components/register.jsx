@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { Store } from '../state/reducers/userReducer.js'
-import { LOGIN_USER } from '../state/constants.js';
+import { Store } from '../state/reducers/userReducer.js';
+import Login from './login.jsx';
+import { LOGIN_USER, CURRENT_VIEW } from '../state/constants.js';
 
 function Register () {
   const [username, setusername] = useState('');
@@ -10,9 +11,16 @@ function Register () {
   const [verifypassword, verifyuserpassword] = useState('');
   //custom hook "setuserpassword" with the variable "userpassword" and initializing it to an empty string
   const { dispatch, state: {isLoggedIn} } = useContext(Store);
+  
   //connecting "dispatch" to state "isLoggedIn" with "useContext"
   const [displayErrorMessage, setdisplayErrorMessage] = useState('')
 
+  const [signupclick, setsignupclick] = useState(true)
+
+
+  if (signupclick === false) {
+    return <Login></Login> 
+ } else {
   return (
     <div>
          <h2>Register</h2>
@@ -67,36 +75,23 @@ function Register () {
             }   
         }
             id="signup" type="signup">Sign Up</button>
+            <div>
+            <button onClick ={
+                (e)=> {
+                    //redirect to the "register" view
+                   setsignupclick(false)
+                }   
+            }
+                id="signup" type="signup">Go Back</button>
+            </div>
         <div>
         <p>{displayErrorMessage}</p>
         </div>
     </div>
 
   );
-
+  }
 }
 
+
 export default Register;
-
-// ********Old code to be deleted beyond this point!*************
-
-// const Register = () => {
-//   const [user, setUser] = useState(initialFormState);
-//   const { dispatch } = useContext(UserContext);
-//   const handleInput = e => {
-//     setUser({ ...user, [e.target.name]: e.target.value });
-//   };
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     setUser(initialFormState);
-//     registerUser(user, dispatch);
-//     return <Redirect to="/" /> 
-//     };
-// }
-
-// const initialFormState = {
-//   username: "",
-//   email: "",
-//   password: "",
-//   organization: ""
-// };
