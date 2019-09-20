@@ -53,11 +53,25 @@ function Login(){
                         //"/api/auth/login"
                         //in the body JSON.stringify(loginObj)
                         //const loginObj = {username: '', password: ''}
+                        console.log({username: username, password: userpassword})
                         fetch('/api/auth/login', {
                             method: 'POST',
                             body: JSON.stringify({username: username, password: userpassword}),    
                             headers:{'Content-Type': 'application/json'}
-                        }).then(dispatch({ type: LOGIN_USER, payload: true}));                    
+                        }).then(function(response) {
+                           return response.json(); 
+                        })
+                        .then(function(myJson){
+                            console.log("server response: " + JSON.stringify(myJson));
+                            let myverify = `{"isAuthenticated":true}`
+                            let responsebool = false;
+                            if (myverify === JSON.stringify(myJson)) {
+                                responsebool = true;
+                            }
+                            console.log(responsebool);
+                            return responsebool;
+                        })
+                        .then(dispatch({ type: LOGIN_USER, payload: true}));                    
                       //then if the server validates our request we can change logged-in to true    
                     }
                         else {

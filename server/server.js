@@ -15,14 +15,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
 });
 
-app.use('/api/auth', authRouter)
+app.use('/api/auth', authRouter);
 
 // routes
 app.use('/api/tech', techRoutes)
 app.use('/api/projects', projectsRoutes);
 
 // global error handler
-app.use((req, res, next, err) => {
+app.use((err,req, res, next) => {
 res.status(400).json({
   errorMessage: 'no route exists that handles your request',
   error: err
@@ -35,10 +35,10 @@ app.use('/api/tech', techRoutes)
 app.use('/api/projects', projectsRoutes);
 
 // global error handler
-app.use((req, res, next, err) => {
-res.status(400).json({
-  errorMessage: 'no route exists that handles your request',
-  error: err
+app.use((err,req, res, next) => {
+  res.status(400).json({
+    errorMessage: 'no route exists that handles your request',
+    error: err
 });
 })
 

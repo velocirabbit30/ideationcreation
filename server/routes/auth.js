@@ -8,12 +8,11 @@ const authRouter = express.Router();
 // research how to invoke cookie with supertest
 
 authRouter.post('/login', authControllers.isVerified, authControllers.login, authControllers.signCookie, (req, res) => {
-  res.status(200).send('Logged in')
+  return res.status(200).json({isAuthenticated: true});
 })
 
-authRouter.post('/register', authControllers.signUp, authControllers.signCookie, (req, res) => {
-  console.log('hit route');
-  res.status(200).send('Successfully registered')
+authRouter.post('/register', authControllers.isVerified, authControllers.signUp, authControllers.signCookie, (req, res) => {
+  return res.status(200).json({isAuthenticated: true});
 });
 
 module.exports = authRouter;
