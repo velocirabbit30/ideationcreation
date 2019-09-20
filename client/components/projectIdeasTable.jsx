@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "react-router-dom";
-import ProjectRow from './projectRow.jsx';
+import ProjectIdeaRow from './projectIdeaRow.jsx';
 import { objectExpression } from '@babel/types';
 import TableHeader from './projectsTableHeader.jsx';
 import ReactTable from "react-table";
@@ -24,18 +24,12 @@ import {
   TableSelection
 } from '@devexpress/dx-react-grid-material-ui';
 
-function ProjectsTable({projects}){
+function ProjectIdeasTable({projects}){
     const [columns] = useState([
-        { name: "cohort", title: "cohort" },
-        { name: "released", title: "released" },
         { name: "projectname", title: "projectname" },
         { name: "projecttype", title: "projecttype" },
         { name: "stack", title: "stack" },
-        { name: "category", title: "category" },
         { name: "technologies", title: "technologies" },
-        { name: "githubstars", title: "github stars" },
-        { name: "githublink", title: "github link" },
-        { name: "writeuplink", title: "writeuplink" },
         { name: "description", title: "description" },
     ]);
     const rows = projects;
@@ -43,17 +37,11 @@ function ProjectsTable({projects}){
     //     row["github link"] = `<a href="${row["github link"]}`;
     // })
     const [columnWidths, setColumnWidths] = useState([
-        { columnName: "cohort", width: 90 },
-        { columnName: "released", width: 90 },
-        { columnName: "projectname", width: 130},
+        { columnName: "projectname", width: 160},
         { columnName: "projecttype", width: 160},
         { columnName: "stack", width: 90 },
-        { columnName: "category", width: 90 },
-        { columnName: "technologies", width: 200 },
-        { columnName: "githubstars", width: 90 },
-        { columnName: "githublink", width: 150 },
-        { columnName: "writeuplink", width: 150 },
-        { columnName: "description", width: 200 },
+        { columnName: "technologies", width: 300 },
+        { columnName: "description", width: 300 },
     ])
 
     // const [selection, setSelection] = useState([1]);
@@ -67,18 +55,11 @@ function ProjectsTable({projects}){
             <IntegratedSorting />
             <FilteringState defaultFilters={[]} />
             <IntegratedFiltering />
-            {/* <SelectionState
-              selection={selection}
-              onSelectionChange={setSelection}
-            /> */}
-            <Table rowComponent={ProjectRow}/>
+           
+            <Table rowComponent={ProjectIdeaRow}/>
             <TableColumnResizing columnWidths={columnWidths} onColumnWidthsChange={setColumnWidths} />
             <TableHeaderRow showSortingControls/>
-            {/* <TableSelection
-              selectByRowClick
-              highlightRow
-              showSelectionColumn={false}
-            /> */}
+          
             <TableFilterRow />
         </Grid>
       </Paper>
@@ -86,4 +67,4 @@ function ProjectsTable({projects}){
     )
 }
 
-export default ProjectsTable;
+export default ProjectIdeasTable;

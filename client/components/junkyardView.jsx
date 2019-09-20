@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from "reac
 import Filter from './filter.jsx';
 import { Store } from '../state/reducers/userReducer.js';
 // const ProjectsTable = React.lazy(() => import ('./projectsTable.jsx'));
-import ProjectsTable from './projectsTable.jsx';
+import ProjectIdeasTable from './projectIdeasTable.jsx';
 import { css } from '@emotion/core';
 import { ClipLoader, PacmanLoader, DotLoader } from 'react-spinners';
 
@@ -12,10 +12,10 @@ const override = css`
     margin: 0 auto;
     border-color: blue;
 `;
-function ProjectView() {
+function JunkyardView() {
 
   // const { state: { projects }} = useContext(Store);
-  const [projects, setProjects] = useState([]);
+  const [projectIdeas, setProjectIdeas] = useState([]);
   const [loading, setLoading] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function ProjectView() {
       })
       .then(projects => {
         console.log("projects:  ", projects)
-        setProjects(projects);
+        setProjectIdeas(projects);
         setLoading(false)
       })
   }, [])
@@ -33,10 +33,10 @@ function ProjectView() {
   return (
     <div className="projectsView">
 
-      <h1>Previous Production Projects</h1>
+      <h1>Production Project Idea Junkyard</h1>
       <div className="projects">
 
-        {/* <Filter /> */}
+        <Filter />
         <div className="loader">
           <DotLoader
           css={override}
@@ -47,10 +47,10 @@ function ProjectView() {
           className="pacman"
         />
         </div>
-        {loading === false && <ProjectsTable className="projectsTable" projects={projects} />}
+        {loading === false && <ProjectIdeasTable className="projectsTable" projects={projectIdeas} />}
       </div>
     </div>
   )
 }
 
-export default ProjectView;
+export default JunkyardView;

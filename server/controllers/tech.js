@@ -38,7 +38,8 @@ const techController = {
         next();
       }
       else res.status(400).json({error: 'there was some error getting an html page'});
-    });
+    })
+    .catch(err => console.error(`Error in getResources: ${err}`))
   }
 }
 
